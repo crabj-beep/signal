@@ -45,7 +45,6 @@ plt.xlabel("Tid [ms]")
 plt.ylabel("Amplitude [V]")
 plt.title("Sammensatt signal")
 plt.grid()
-plt.tight_layout()
 plt.show()
 
 
@@ -83,32 +82,16 @@ def amplitude_spectrum(signal, fs):
 # Beregn enkeltsidig amplitudespekter
 freq, amplitude = amplitude_spectrum(signal, fs)
 
-plt.figure(figsize=(10, 4))
+
 plt.stem(freq, amplitude, basefmt=" ")
 plt.xlim(0, fs / 2)
 plt.xlabel("Frekvens [Hz]")
 plt.ylabel("Amplitude [V]")
 plt.title("Enkeltsidig amplitudespekter")
 plt.grid()
-plt.tight_layout()
 plt.show()
 
 
-# Skriv ut frekvensoppløsningen
-delta_f = freq[1] - freq[0]
-print("Frekvensoppløsning:", delta_f, "Hz")
-
-
-# Kontroller amplitudene ved de tre frekvensene
-for forventet_frekvens in fk:
-    indeks = np.argmin(np.abs(freq - forventet_frekvens))
-
-    print(
-        forventet_frekvens,
-        "Hz:",
-        amplitude[indeks],
-        "V",
-    )
 
 
 # Sammenlign fft() og rfft()
@@ -145,7 +128,6 @@ ax[1].set_ylabel("Amplitude [V]")
 ax[1].set_title("np.fft.rfft()")
 ax[1].grid()
 
-plt.tight_layout()
 plt.show()
 
 
